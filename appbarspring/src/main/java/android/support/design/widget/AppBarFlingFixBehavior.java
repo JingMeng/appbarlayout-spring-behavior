@@ -1,9 +1,11 @@
-package android.support.design.widget;
+package com.google.android.material.appbar;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.support.annotation.VisibleForTesting;
-import android.support.v4.view.ViewCompat;
+import androidx.annotation.VisibleForTesting;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.animation.AnimationUtils;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.View;
 

@@ -1,9 +1,9 @@
-package loopeer.com.appbarlayout_spring_extension;
+﻿package loopeer.com.appbarlayout_spring_extension;
 
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
 
@@ -26,3 +26,4 @@ public class TabFragmentPagerAdapter extends FragmentPagerAdapter {
         return "Tab" + position;
     }
 }
+

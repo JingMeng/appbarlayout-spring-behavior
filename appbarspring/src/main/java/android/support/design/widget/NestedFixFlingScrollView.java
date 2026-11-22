@@ -1,4 +1,4 @@
-package android.support.design.widget;
+package com.google.android.material.appbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,21 +7,20 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.InputDeviceCompat;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v4.view.NestedScrollingChild;
-import android.support.v4.view.NestedScrollingChildHelper;
-import android.support.v4.view.NestedScrollingParent;
-import android.support.v4.view.NestedScrollingParentHelper;
-import android.support.v4.view.ScrollingView;
-import android.support.v4.view.VelocityTrackerCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.accessibility.AccessibilityEventCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
-import android.support.v4.view.accessibility.AccessibilityRecordCompat;
-import android.support.v4.widget.EdgeEffectCompat;
-import android.support.v4.widget.ScrollerCompat;
+import androidx.core.view.AccessibilityDelegateCompat;
+import androidx.core.view.InputDeviceCompat;
+import androidx.core.view.MotionEventCompat;
+import androidx.core.view.NestedScrollingChild;
+import androidx.core.view.NestedScrollingChildHelper;
+import androidx.core.view.NestedScrollingParent;
+import androidx.core.view.NestedScrollingParentHelper;
+import androidx.core.view.ScrollingView;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.core.view.accessibility.AccessibilityRecordCompat;
+import androidx.core.widget.EdgeEffectCompat;
+import android.widget.OverScroller;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -92,7 +91,7 @@ public class NestedFixFlingScrollView extends FrameLayout implements NestedScrol
     private long mLastScroll;
 
     private final Rect mTempRect = new Rect();
-    private ScrollerCompat mScroller;
+    private OverScroller mScroller;
     private EdgeEffectCompat mEdgeGlowTop;
     private EdgeEffectCompat mEdgeGlowBottom;
 
@@ -352,7 +351,7 @@ public class NestedFixFlingScrollView extends FrameLayout implements NestedScrol
     }
 
     private void initScrollView() {
-        mScroller = ScrollerCompat.create(getContext(), null);
+        mScroller = new OverScroller(getContext());
         setFocusable(true);
         setDescendantFocusability(FOCUS_AFTER_DESCENDANTS);
         setWillNotDraw(false);
@@ -829,8 +828,7 @@ public class NestedFixFlingScrollView extends FrameLayout implements NestedScrol
             case MotionEvent.ACTION_UP:
                 final VelocityTracker velocityTracker = mVelocityTracker;
                 velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
-                int initialVelocity = (int) VelocityTrackerCompat.getYVelocity(velocityTracker,
-                        mActivePointerId);
+                int initialVelocity = (int) velocityTracker.getYVelocity(mActivePointerId);
 
                 if ((Math.abs(initialVelocity) > mMinimumVelocity)) {
                     flingWithNestedDispatch(-initialVelocity);

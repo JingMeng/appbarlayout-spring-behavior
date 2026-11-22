@@ -1,15 +1,15 @@
-package loopeer.com.appbarlayout_spring_extension;
+﻿package loopeer.com.appbarlayout_spring_extension;
 
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.AppBarLayoutSpringBehavior;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.AppBarLayoutSpringBehavior;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.TabLayout;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.tabs.TabLayout;
 import android.support.design.widget.TabScrimHelper;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.github.mmin18.widget.RealtimeBlurView;
 
@@ -45,3 +45,4 @@ public class SpringAppBarLayoutWithTabActivity extends AppCompatActivity {
         appBarLayout.addOnOffsetChangedListener(tabScrimHelper);
     }
 }
+
